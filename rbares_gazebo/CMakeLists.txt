@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rb_ares_gazebo)
+project(rbares_gazebo)
 
 
 find_package(catkin REQUIRED

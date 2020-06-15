@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rb_ares_sim_bringup)
+project(rbares_sim_bringup)
 
 find_package(catkin REQUIRED)
 

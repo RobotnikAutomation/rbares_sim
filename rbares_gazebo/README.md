@@ -1,4 +1,4 @@
-# rb_ares_gazebo
+# rbares_gazebo
 
 Package for the simulation of the Autonomous Pallet Truck in the Gazebo simulator
 
@@ -8,7 +8,7 @@ Package for the simulation of the Autonomous Pallet Truck in the Gazebo simulato
 
 Spawns the simulation environment, without robots. Has the following arguments:
 
-* ` world, default="$(find rb_ares_gazebo)/worlds/rb_ares_epal.world" `
+* ` world, default="$(find rbares_gazebo)/worlds/rbares_epal.world" `
 
 World file to be loaded, as an absolute path in the file system.
 
@@ -30,7 +30,7 @@ If simulator should show its GUI.
 
 #### spawn_robot.launch
 
-Spawns a robot in a running simulation environment. It only spawns the robot in the environement, it does not spawn any of the required software for the robot (e.g. control, navigation, etc.). This is done in the rb_ares_sim_bringup package.
+Spawns a robot in a running simulation environment. It only spawns the robot in the environement, it does not spawn any of the required software for the robot (e.g. control, navigation, etc.). This is done in the rbares_sim_bringup package.
 
 This launch has the following arguments:
 

@@ -1,4 +1,4 @@
-# rb_ares_sim_bringup
+# rbares_sim_bringup
 
 Launch and config files that launch the complete simulation of the robot, being simulator independent.
 Launch files are splitted so one can run the simulation environment, a robot and rviz independently.
@@ -22,12 +22,12 @@ This README file is splitted in the following sections:
 
 There are four launch files. They are explained from high-level to low-level.
 
-1. rb_ares_complete.launch
+1. rbares_complete.launch
 1. run_simulation.launch
 1. run_robot.launch
 1. run_rviz.launch
 
-### rb_ares_complete.launch
+### rbares_complete.launch
 
 Single file that can run the simulation environment, a single robot and an RViz instance to visualize that robot. What is runned is controlled through arguments, and uses the launch files described in this list.
 
@@ -51,25 +51,25 @@ Runs an RViz instance to visualize an already running robot.
 
 These arguments are common to all launch files in this package.
 
-` simulation_package, default="$(optenv SIMULATION_PACKAGE rb_ares_gazebo)" `
+` simulation_package, default="$(optenv SIMULATION_PACKAGE rbares_gazebo)" `
 
 Defines which package has the launch files for the simulation. Possibilities:
 
-1. rb_ares_gazebo, has a configuration for Gazebo simulator
-1. rb_ares_stage, has a configuration for Stage simulator.
+1. rbares_gazebo, has a configuration for Gazebo simulator
+1. rbares_stage, has a configuration for Stage simulator.
 
-` config_package, default="$(optenv SIMULATION_CONFIG_PACKAGE rb_ares_gazebo)" `
+` config_package, default="$(optenv SIMULATION_CONFIG_PACKAGE rbares_gazebo)" `
 
 Defines which package has the launch configuration files for the simulation. Possibilities:
 
-1. rb_ares_gazebo, has standard configuration for Gazebo simulator.
-1. rb_ares_gazebo_fancy, has the configuration for Gazebo simulator related to the Fancy project.
+1. rbares_gazebo, has standard configuration for Gazebo simulator.
+1. rbares_gazebo_fancy, has the configuration for Gazebo simulator related to the Fancy project.
 
 ` use_gpu_for_simulation, default="$(optenv SIMULATION_USE_GPU true)" `
 
 Defines if simulation use GPU accelerated plugins or not. If true, simulation should run faster but with problems sometimes. At the time of this writing this only affects the XACRO/URDF, which is the one that specifies which plugins are loaded (so you can say if they are GPU based or not).
 
-### rb_ares_complete.launch
+### rbares_complete.launch
 
 This launch file receives and forwards the arguments for the low-level launch files, which are described later, as well as the following:
 
@@ -89,7 +89,7 @@ If RViz should be runed
 
 This launch file received arguments to set up the simulation environment.
 
-* ` world, default="worlds/rb_ares_epal.world" `
+* ` world, default="worlds/rbares_epal.world" `
 
 World file to be loaded, as relative path to config_package argument
 
@@ -123,11 +123,11 @@ Robot id.
 
 Prefix of runed robot.
 
-* ` robot_model, default="$(optenv ROBOT_MODEL rb_ares)"  `
+* ` robot_model, default="$(optenv ROBOT_MODEL rbares)"  `
 
-If different models should exist (rb_ares, rb_ares_steel...)
+If different models should exist (rbares)
 
-* ` robot_xacro, default="$(optenv ROBOT_XACRO rb_ares_std.urdf.xacro)"  `
+* ` robot_xacro, default="$(optenv ROBOT_XACRO rbares_std.urdf.xacro)"  `
 
 Specifies XACRO to be loaded as robot_description
 
@@ -181,37 +181,37 @@ Lists which environtment variables are used by this configuration package.
 
 #### Launch standard simulation with one robot and its visualization:
 
-* `roslaunch rb_ares_sim_bringup rb_ares_complete.launch`
+* `roslaunch rbares_sim_bringup rbares_complete.launch`
 
 #### Launch standard simulation with one robot and its visualization and run another one called "robot_2" in start pose (5, 0, 0) without visualization
 
 First:
 
-* `roslaunch rb_ares_sim_bringup rb_ares_complete.launch`
+* `roslaunch rbares_sim_bringup rbares_complete.launch`
 
 Then:
 
-* `roslaunch rb_ares_sim_bringup rb_ares_complete.launch robot_id:=robot_2 x_init_pose:=5 run_simulation:=false run_rviz:=false`
+* `roslaunch rbares_sim_bringup rbares_complete.launch robot_id:=robot_2 x_init_pose:=5 run_simulation:=false run_rviz:=false`
 
 or:
 
-* `roslaunch rb_ares_sim_bringup run_robot.launch robot_id:=robot_2 x_init_pose:=5`
+* `roslaunch rbares_sim_bringup run_robot.launch robot_id:=robot_2 x_init_pose:=5`
 
 #### Launch simulation environment and two robots independently, with rviz for only one robot:
 
-* `roslaunch rb_ares_sim_bringup rb_ares_complete.launch run_robot:=false run_rviz:=false`
+* `roslaunch rbares_sim_bringup rbares_complete.launch run_robot:=false run_rviz:=false`
 
 Then:
 
-* `roslaunch rb_ares_sim_bringup rb_ares_complete.launch run_simulation:=false`
+* `roslaunch rbares_sim_bringup rbares_complete.launch run_simulation:=false`
 
-* `roslaunch rb_ares_sim_bringup rb_ares_complete.launch robot_id:=robot_2 x_init_pose:=5 run_simulation:=false`
+* `roslaunch rbares_sim_bringup rbares_complete.launch robot_id:=robot_2 x_init_pose:=5 run_simulation:=false`
 
 or:
 
-* `roslaunch rb_ares_sim_bringup run_robot.launch robot_id:=robot x_init_pose:=0 run_rviz:=true`
+* `roslaunch rbares_sim_bringup run_robot.launch robot_id:=robot x_init_pose:=0 run_rviz:=true`
 
-* `roslaunch rb_ares_sim_bringup run_robot.launch robot_id:=robot_2 x_init_pose:=5 run_rviz:=false`
+* `roslaunch rbares_sim_bringup run_robot.launch robot_id:=robot_2 x_init_pose:=5 run_rviz:=false`
 
 ## How to extend
 
@@ -219,12 +219,12 @@ The most important thing is to maintain compatibility and reuse existing structu
 
 ### New simulator
 
-If a new simulator is used (VREP, Stage, etc), a `rb_ares_SIMULATOR` package must be created with at least two low-level launch files:
+If a new simulator is used (VREP, Stage, etc), a `rbares_SIMULATOR` package must be created with at least two low-level launch files:
 
 1. spawn_simulation.launch, which will load the simulation environment.
 2. spawn_robot.launch, which will spawn a robot into that simulation environemt.
 
-Remember that this package should only spawn a low-level robot, without running it's software (i.e. control), which is done at a higher-level, in this case, in the `rb_ares_sim_bringup/run_robot.launch`.
+Remember that this package should only spawn a low-level robot, without running it's software (i.e. control), which is done at a higher-level, in this case, in the `rbares_sim_bringup/run_robot.launch`.
 
 Arguments for simulation should match and be remapped to existing arguments. For example, if new simulator receives world file through an argument called `environment`, then `spawn_simulation.launch` should receive it through the already existing argument `world`, but internally call the simulator with the `environment` argument.
 
@@ -234,7 +234,7 @@ Current existing arguments are derived from Gazebo, because it is the simulator 
 
 ### New configuration
 
-If an specific configuration for a project is required, then a `rb_ares_SIMULATOR_PROJECT` package must be created with the required simulation files, such as `world, models, etc.` folders. Launch files are not required.
+If an specific configuration for a project is required, then a `rbares_SIMULATOR_PROJECT` package must be created with the required simulation files, such as `world, models, etc.` folders. Launch files are not required.
 
 Update README files accordingly.
 

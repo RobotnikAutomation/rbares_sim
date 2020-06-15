@@ -4,25 +4,25 @@
 
 objects:
  -
-   model: rb_ares_cart
+   model: rbares_cart
    default_link: link_0
  -
-   model: rb_ares_cart_0
+   model: rbares_cart_0
    default_link: link_0
  -
-   model: rb_ares_cart_1
+   model: rbares_cart_1
    default_link: link_0
 
 robots:
 - 
-   model: rb_ares_a
-   default_link: rb_ares_a_base_footprint
+   model: rbares_a
+   default_link: rbares_a_base_footprint
 - 
-   model: rb_ares_b
-   default_link: rb_ares_b_base_footprint
+   model: rbares_b
+   default_link: rbares_b_base_footprint
 - 
-   model: rb_ares_c
-   default_link: rb_ares_c_base_footprint
+   model: rbares_c
+   default_link: rbares_c_base_footprint
 
 config:
   # min distance for the simple pick

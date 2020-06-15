@@ -2,15 +2,15 @@
 <launch>
 
   <!-- What simulator to use -->
-  <arg name="simulation_package" default="$(optenv SIMULATION_PACKAGE rb_ares_gazebo)"/>
-  <arg name="config_package" default="$(optenv SIMULATION_CONFIG_PACKAGE rb_ares_gazebo)"/>
+  <arg name="simulation_package" default="$(optenv SIMULATION_PACKAGE rbares_gazebo)"/>
+  <arg name="config_package" default="$(optenv SIMULATION_CONFIG_PACKAGE rbares_gazebo)"/>
   <arg name="use_gpu_for_simulation" default="$(optenv SIMULATION_USE_GPU true)"/>
 
   <!-- arg to config the launch file-->
   <arg name="robot_id" default="$(optenv ROBOT_ID robot)"/>
   <arg name="prefix" default="$(arg robot_id)_"/>
-  <arg name="robot_model" default="$(optenv ROBOT_MODEL rb_ares)"/> <!-- If different models should exist (rb_ares, rb_ares_steel...) -->
-  <arg name="robot_xacro" default="$(optenv ROBOT_XACRO rb_ares_std.urdf.xacro)"/>
+  <arg name="robot_model" default="$(optenv ROBOT_MODEL rbares)"/> <!-- If different models should exist (rbares) -->
+  <arg name="robot_xacro" default="$(optenv ROBOT_XACRO rbares_std.urdf.xacro)"/>
 
   <!-- Robot configuration -->
   <arg name="x_init_pose" default="0"/>
@@ -41,7 +41,7 @@
   <group ns="$(arg robot_id)">
 
     <!-- Load the URDF into the ROS Parameter Server -->
-    <include file="$(find rb_ares_description)/launch/rb_ares_state.launch" >
+    <include file="$(find rbares_description)/launch/rbares_state.launch" >
       <arg name="robot_id" value="$(arg robot_id)" />
       <arg name="prefix" value="$(arg prefix)" />
       <arg name="robot_xacro" value="$(arg robot_xacro)" />
@@ -49,13 +49,13 @@
     </include>
 
     <!-- Start control nodes -->
-    <include file="$(find rb_ares_control)/launch/rb_ares_control.launch">
+    <include file="$(find rbares_control)/launch/rbares_control.launch">
       <arg name="robot_id" value="$(arg robot_id)"/>
       <arg name="prefix" value="$(arg prefix)"/>
     </include>
 
     <!-- base_hw_sim -->
-    <include if="$(arg launch_base_hw_sim)" file="$(find robotnik_base_hw_sim)/launch/rb_ares_hw_sim.launch">
+    <include if="$(arg launch_base_hw_sim)" file="$(find robotnik_base_hw_sim)/launch/rbares_hw_sim.launch">
       <arg name="prefix" value="$(arg prefix)"/>
     </include>
 
@@ -79,7 +79,7 @@
   </group>
 
   <!-- launch rviz -->
-  <include if="$(arg run_rviz)" ns="$(arg robot_id)" file="$(find rb_ares_sim_bringup)/launch/run_rviz.launch">
+  <include if="$(arg run_rviz)" ns="$(arg robot_id)" file="$(find rbares_sim_bringup)/launch/run_rviz.launch">
     <arg name="rviz_config_file" value="$(arg rviz_config_file)" />
   </include>
 
