@@ -26,9 +26,6 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: LaserScan
-  - Class: teleop_panel/Teleop
-    Name: Teleop
-    Topic: /mobile_controller/cmd_vel
   - Class: rviz/Help
     Name: Help
 Toolbars:
