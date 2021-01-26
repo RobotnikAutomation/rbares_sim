@@ -5,6 +5,7 @@
   <arg name="simulation_package" default="$(optenv SIMULATION_PACKAGE rbares_gazebo)"/>
   <arg name="config_package" default="$(optenv SIMULATION_CONFIG_PACKAGE rbares_gazebo)"/>
   <arg name="use_gpu_for_simulation" default="$(optenv SIMULATION_USE_GPU true)"/>
+  <arg name="world_package" default="$(optenv WORLD_PACKAGE rbares_gazebo)"/>
 
   <!-- What to execute -->
   <arg name="run_simulation" default="true"/>
@@ -12,7 +13,8 @@
   <arg name="run_rviz" default="true"/>
 
   <!-- Simulation configuration -->
-  <arg name="world_file" default="$(find gazebo_ros)/launch/empty_world.launch"/> <!-- absolute path -->
+  <arg name="world_path" default="worlds/rbares_epal.world" /> <!-- relative path to config_package -->
+  <arg name="world" default="$(eval find(config_package) + '/' + world_path)"/> <!-- absolute path -->
   <arg name="debug" default="false"/>
   <arg name="paused" default="false"/>
   <arg name="headless" default="false"/>
@@ -38,7 +40,7 @@
     <arg name="simulation_package" value="$(arg simulation_package)"/>
     <arg name="config_package" value="$(arg config_package)"/>
 
-    <arg name="world" value="$(arg world_file)"/>
+    <arg name="world" value="$(arg world)"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="paused" value="$(arg paused)" />
     <arg name="headless" value="$(arg headless)"/>
