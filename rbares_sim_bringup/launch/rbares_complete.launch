@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
+  <env name="GAZEBO_MODEL_PATH" value="$(find rbares_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)" />
+
   <!-- What simulator config package to use -->
   <arg name="simulation_package" default="$(optenv SIMULATION_PACKAGE rbares_gazebo)"/>
   <arg name="config_package" default="$(optenv SIMULATION_CONFIG_PACKAGE rbares_gazebo)"/>
@@ -13,7 +15,7 @@
   <arg name="run_rviz" default="true"/>
 
   <!-- Simulation configuration -->
-  <arg name="world_path" default="worlds/rbares_epal.world" /> <!-- relative path to config_package -->
+  <arg name="world_path" default="worlds/map.sdf" /> <!-- relative path to config_package -->
   <arg name="world" default="$(eval find(config_package) + '/' + world_path)"/> <!-- absolute path -->
   <arg name="debug" default="false"/>
   <arg name="paused" default="false"/>
